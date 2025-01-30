@@ -1,0 +1,13 @@
+.list-link {
+    list-style: none;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.item-link {
+    font-size: 20px;
+
+    text-decoration: none;
+}

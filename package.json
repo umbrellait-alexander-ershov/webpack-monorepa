@@ -1,0 +1,20 @@
+{
+  "name": "monorepa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -n Host,Admin,Shop -c green,blue,yellow --kill-others \"yarn start:shop\" \"yarn start:admin\" \"yarn start:host\"",
+    "start:shop": "yarn workspace shop start:service",
+    "start:admin": "yarn workspace admin start:service",
+    "start:host": "yarn workspace host start:service",
+    "start:lerna": "lerna run start:service --scope \"host\" --scope \"shop\" --scope \"admin\""
+  },
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "lerna": "^8.1.9"
+  }
+}
