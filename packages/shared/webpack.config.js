@@ -6,6 +6,31 @@ const tsLoader = {
   exclude: /node_modules/,
 };
 
+const swcLoader = {
+  test: /\.(ts|tsx)$/,
+  exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: "swc-loader",
+    options: {
+      jsc: {
+        parser: {
+          syntax: "typescript",
+          tsx: true,
+          decorators: false,
+          dynamicImport: true,
+        },
+        target: "es2015",
+        transform: {
+          react: {
+            runtime: "automatic",
+          },
+        },
+      },
+      minify: true,
+    },
+  },
+};
+
 module.exports = {
   mode: "development",
   entry: path.resolve(__dirname, "./src", "index.tsx"),
@@ -14,6 +39,6 @@ module.exports = {
     filename: "[name].[contenthash].js",
   },
   module: {
-    rules: [tsLoader],
+    rules: [swcLoader],
   },
 };

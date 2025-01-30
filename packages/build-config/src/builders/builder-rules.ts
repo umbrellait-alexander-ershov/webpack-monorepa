@@ -57,5 +57,30 @@ export const builderRules = ({
     },
   };
 
-  return [sassLoader, cssLoader, assetsLoader, tsLoader];
+  const swcLoader = {
+    test: /\.(ts|tsx)$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loader: "swc-loader",
+      options: {
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            tsx: true,
+            decorators: false,
+            dynamicImport: true,
+          },
+          target: "es2015",
+          transform: {
+            react: {
+              runtime: "automatic",
+            },
+          },
+        },
+        minify: true,
+      },
+    },
+  };
+
+  return [sassLoader, cssLoader, assetsLoader, swcLoader];
 };
