@@ -21,6 +21,6 @@
 
 - `yarn start:services` — `запуск приложения через concurrently`
 - `yarn start:lerna` — `запуск через lerna`
-- `yarn start:${service}` — `запуск отдельного модуля`
+- `yarn start:${service}` — `запуск отдельного сервиса`
 - `yarn storybook:start` — `запуск UI-kit в Storybook`
 - `yarn storybook:build` — `билд UI-kit`
